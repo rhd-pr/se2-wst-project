@@ -1,0 +1,248 @@
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 16px;
+}
+.page-header h1 { font-size:1.35rem; font-weight:600; color:var(--clr-primary-dark); margin-bottom:4px; }
+.page-header p  { font-size:0.85rem; color:var(--clr-text-muted); }
+
+/* ── Filters ─────────────────────────────────────────────────── */
+.al-filters-card { margin-bottom: 16px; }
+
+.al-filters {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 14px 16px;
+}
+
+.al-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.al-filter-group > label {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.al-filter-btns { display: flex; gap: 4px; }
+
+.al-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--clr-text-muted);
+    background: var(--clr-surface);
+    border: 1.5px solid var(--clr-border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+.al-filter-btn svg { width: 12px; height: 12px; }
+.al-filter-btn:hover { border-color: var(--clr-primary); color: var(--clr-primary); }
+.al-filter-btn.active { background: var(--clr-primary); border-color: var(--clr-primary); color: #fff; }
+
+.al-filter-select {
+    padding: 6px 28px 6px 10px;
+    font-size: 0.825rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--border-radius);
+    color: var(--clr-text);
+    background: var(--clr-surface);
+    min-width: 140px;
+    width: auto;
+}
+
+.al-filter-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    max-width: 260px;
+    background: var(--clr-surface-2);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--border-radius);
+    padding: 0 10px;
+}
+.al-filter-search svg { width: 14px; height: 14px; color: var(--clr-text-light); flex-shrink: 0; }
+.al-filter-search input {
+    border: none; background: none; padding: 8px 0;
+    font-size: 0.85rem; width: 100%; outline: none; box-shadow: none;
+}
+
+/* ── Count badge ─────────────────────────────────────────────── */
+.al-count-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    background: var(--clr-surface-2);
+    border-radius: 20px;
+    border: 1px solid var(--clr-border-light);
+}
+
+.card-body.no-pad { padding: 0; }
+
+/* ── Loading ─────────────────────────────────────────────────── */
+.al-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 40px;
+    color: var(--clr-text-muted);
+    font-size: 0.875rem;
+}
+.al-loading svg { width: 16px; height: 16px; animation: al-spin 1s linear infinite; }
+
+@keyframes al-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ── Action badges ───────────────────────────────────────────── */
+.al-badge-create { background: #E8F5EE; color: #2E8B57; }
+.al-badge-update { background: #E3F0FB; color: #1A6FA8; }
+.al-badge-delete { background: #FDECEA; color: #C0392B; }
+
+/* ── Details button ──────────────────────────────────────────── */
+.al-diff-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    font-size: 0.775rem;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--border-radius);
+    background: var(--clr-surface);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.al-diff-btn svg { width: 12px; height: 12px; }
+.al-diff-btn:hover { border-color: var(--clr-primary); color: var(--clr-primary); }
+
+/* ── Timestamp ───────────────────────────────────────────────── */
+.al-time {
+    font-size: 0.825rem;
+    color: var(--clr-text);
+}
+.al-time-rel {
+    font-size: 0.75rem;
+    color: var(--clr-text-light);
+    margin-top: 2px;
+}
+
+/* ── Pagination ──────────────────────────────────────────────── */
+.al-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-top: 1px solid var(--clr-border-light);
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.al-pagination-info {
+    font-size: 0.8rem;
+    color: var(--clr-text-muted);
+}
+
+.al-pagination-btns {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.al-page-btn {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--clr-border);
+    background: var(--clr-surface);
+    font-size: 0.825rem;
+    color: var(--clr-text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    font-family: var(--font-body);
+}
+.al-page-btn svg { width: 13px; height: 13px; }
+.al-page-btn:hover:not(:disabled) { background: var(--clr-surface-2); color: var(--clr-text); border-color: var(--clr-primary); }
+.al-page-btn.active { background: var(--clr-primary); border-color: var(--clr-primary); color: #fff; }
+.al-page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* ── Diff Modal ──────────────────────────────────────────────── */
+.al-diff-modal {
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.al-diff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.825rem;
+}
+
+.al-diff-table th {
+    padding: 8px 12px;
+    background: var(--clr-surface-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: left;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+.al-diff-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--clr-border-light);
+    vertical-align: top;
+    word-break: break-word;
+}
+
+.al-diff-table tr:last-child td { border-bottom: none; }
+
+.al-diff-field { font-weight: 500; color: var(--clr-text); }
+.al-diff-old   { color: var(--clr-danger); }
+.al-diff-new   { color: var(--clr-success); }
+.al-diff-same  { color: var(--clr-text-muted); font-style: italic; }
+
+.al-diff-empty {
+    text-align: center;
+    padding: 24px;
+    color: var(--clr-text-muted);
+    font-size: 0.875rem;
+}
+
+.al-diff-section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 12px 0 6px;
+}

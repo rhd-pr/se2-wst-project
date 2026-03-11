@@ -1,0 +1,247 @@
+/* ── Page Header ─────────────────────────────────────────────── */
+.page-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:20px; gap:16px; }
+.page-header h1 { font-size:1.35rem; font-weight:600; color:var(--clr-primary-dark); margin-bottom:4px; letter-spacing:-0.01em; }
+.page-header p  { font-size:0.85rem; color:var(--clr-text-muted); }
+
+/* ── Filters ─────────────────────────────────────────────────── */
+.rt-filters-card { margin-bottom:16px; }
+
+.rt-filters {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 14px 16px;
+}
+
+.rt-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rt-filter-group > label {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.rt-filter-btns { display:flex; gap:4px; }
+
+.rt-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--clr-text-muted);
+    background: var(--clr-surface);
+    border: 1.5px solid var(--clr-border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.rt-filter-btn:hover { border-color:var(--clr-primary); color:var(--clr-primary); }
+
+.rt-filter-btn.active {
+    background: var(--clr-primary);
+    border-color: var(--clr-primary);
+    color: #fff;
+    font-weight: 500;
+}
+.rt-filter-btn.active[data-value="bus"]       { background:#1A6FA8; border-color:#1A6FA8; }
+.rt-filter-btn.active[data-value="jeepney"]   { background:#C0392B; border-color:#C0392B; }
+.rt-filter-btn.active[data-value="tricycle"]  { background:#2E8B57; border-color:#2E8B57; }
+.rt-filter-btn.active[data-value="mixed"]     { background:#8E44AD; border-color:#8E44AD; }
+.rt-filter-btn.active[data-value="active"]    { background:var(--clr-success); border-color:var(--clr-success); }
+.rt-filter-btn.active[data-value="suspended"] { background:var(--clr-warning); border-color:var(--clr-warning); }
+.rt-filter-btn.active[data-value="affected"]  { background:var(--clr-danger);  border-color:var(--clr-danger); }
+
+.rt-filter-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    max-width: 260px;
+    background: var(--clr-surface-2);
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--border-radius);
+    padding: 0 10px;
+    transition: border-color var(--transition);
+}
+.rt-filter-search:focus-within { border-color:var(--clr-primary); background:var(--clr-surface); }
+.rt-filter-search svg { width:14px; height:14px; color:var(--clr-text-light); flex-shrink:0; }
+.rt-filter-search input {
+    flex:1; border:none; background:transparent;
+    font-family:var(--font-body); font-size:0.85rem; color:var(--clr-text);
+    padding:7px 0; outline:none;
+}
+.rt-filter-search input::placeholder { color:var(--clr-text-light); }
+
+/* ── Table ───────────────────────────────────────────────────── */
+.rt-count-badge {
+    font-size:0.75rem; font-weight:600; color:var(--clr-text-muted);
+    background:var(--clr-surface-2); border:1px solid var(--clr-border);
+    padding:2px 9px; border-radius:20px;
+}
+
+.table-loading {
+    display:flex; align-items:center; justify-content:center;
+    gap:8px; padding:32px; color:var(--clr-text-muted); font-size:0.875rem;
+}
+.table-loading svg { width:16px; height:16px; animation:rt-spin 1s linear infinite; }
+
+.table-empty {
+    text-align:center; padding:40px 20px;
+    color:var(--clr-text-light); font-size:0.875rem;
+}
+.table-empty svg { width:32px; height:32px; color:var(--clr-border); display:block; margin:0 auto 10px; }
+
+.table-actions { display:flex; gap:4px; }
+.card-body.no-pad { padding:0; }
+
+/* Route type badges */
+.badge-bus      { background:#E3F0FB; color:#1A6FA8; }
+.badge-jeepney  { background:#FDECEA; color:#C0392B; }
+.badge-tricycle { background:#E8F5EE; color:#2E8B57; }
+.badge-mixed    { background:#F0E8F8; color:#8E44AD; }
+
+/* ── Map ─────────────────────────────────────────────────────── */
+.rt-map-card { margin-top:16px; }
+
+.rt-map-header-left p { font-size:0.8rem; color:var(--clr-text-muted); margin-top:2px; }
+
+.rt-draw-toolbar { display:flex; gap:8px; align-items:center; }
+
+.rt-btn-save {
+    background: var(--clr-success);
+    color: #fff;
+    border: 1.5px solid var(--clr-success);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition);
+}
+.rt-btn-save:hover { background:#27ae60; border-color:#27ae60; }
+.rt-btn-save svg { width:13px; height:13px; }
+
+.rt-draw-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #EBF4FF;
+    border-bottom: 1px solid #C5DFF8;
+    font-size: 0.825rem;
+    color: #1A6FA8;
+}
+.rt-draw-status svg { width:14px; height:14px; flex-shrink:0; }
+
+.rt-map-wrap { position:relative; height:440px; }
+
+#rtMap {
+    height: 100%;
+    width: 100%;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+/* Style the Leaflet.draw toolbar to match TURS */
+.leaflet-draw-toolbar a {
+    background-color: var(--clr-primary) !important;
+    border-radius: 4px !important;
+}
+.leaflet-draw-toolbar a:hover { background-color:var(--clr-primary-dark) !important; }
+
+/* Route polyline legend */
+.rt-legend {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--border-radius);
+    padding: 10px 14px;
+    font-size: 0.775rem;
+    z-index: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.rt-legend-title { font-weight:600; color:var(--clr-text); margin-bottom:6px; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.04em; }
+.rt-legend-item { display:flex; align-items:center; gap:8px; margin-bottom:4px; color:var(--clr-text-muted); }
+.rt-legend-item:last-child { margin-bottom:0; }
+.rt-legend-line { width:24px; height:3px; border-radius:2px; flex-shrink:0; }
+.rt-legend-line.dashed { background:repeating-linear-gradient(90deg,currentColor 0,currentColor 4px,transparent 4px,transparent 8px); height:2px; }
+
+/* ── Form ────────────────────────────────────────────────────── */
+.req { color:var(--clr-danger); margin-left:2px; }
+
+.rt-points-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rt-points-row .rt-points-info {
+    flex: 1;
+}
+
+.rt-points-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--clr-surface-2);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--border-radius);
+    font-size: 0.825rem;
+    color: var(--clr-text-muted);
+}
+.rt-points-info svg { width:14px; height:14px; flex-shrink:0; }
+.rt-points-info.has-points { background:#E8F5EE; border-color:#A8D5B8; color:#2E8B57; }
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes rt-spin { to { transform:rotate(360deg); } }
+
+/* ── Edit Path button in table ───────────────────────────────── */
+.rt-btn-path {
+    color: var(--clr-primary);
+    border-color: transparent;
+}
+.rt-btn-path:hover {
+    background: #EBF4FF;
+    border-color: var(--clr-primary);
+}
+
+/* ── Path-edit point handles ─────────────────────────────────── */
+.rt-pt-handle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2.5px solid #1A6FA8;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    cursor: grab;
+    box-sizing: border-box;
+}
+.rt-pt-handle:active { cursor: grabbing; }
+
+.rt-pt-first {
+    background: #2E8B57;
+    border-color: #2E8B57;
+}
+.rt-pt-last {
+    background: #C0392B;
+    border-color: #C0392B;
+}

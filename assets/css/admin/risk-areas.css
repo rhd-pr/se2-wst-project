@@ -1,0 +1,348 @@
+/* ── Page Header ─────────────────────────────────────────────── */
+.page-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:20px; gap:16px; }
+.page-header h1 { font-size:1.35rem; font-weight:600; color:var(--clr-primary-dark); margin-bottom:4px; letter-spacing:-0.01em; }
+.page-header p  { font-size:0.85rem; color:var(--clr-text-muted); }
+
+/* ── Filters ─────────────────────────────────────────────────── */
+.ra-filters-card { margin-bottom:16px; }
+
+.ra-filters {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 14px 16px;
+}
+
+.ra-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ra-filter-group > label {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.ra-filter-btns { display:flex; gap:4px; flex-wrap:wrap; }
+
+.ra-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--clr-text-muted);
+    background: var(--clr-surface);
+    border: 1.5px solid var(--clr-border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.ra-filter-btn svg { width:12px; height:12px; }
+.ra-filter-btn:hover { border-color:var(--clr-primary); color:var(--clr-primary); }
+
+.ra-filter-btn.active {
+    background: var(--clr-primary);
+    border-color: var(--clr-primary);
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Type active colours */
+.ra-filter-btn.active[data-value="flood"]        { background:#1A6FA8; border-color:#1A6FA8; }
+.ra-filter-btn.active[data-value="landslide"]    { background:#8B4513; border-color:#8B4513; }
+.ra-filter-btn.active[data-value="accident"]     { background:#C0392B; border-color:#C0392B; }
+.ra-filter-btn.active[data-value="road_closure"] { background:#555;    border-color:#555; }
+.ra-filter-btn.active[data-value="other"]        { background:#8E44AD; border-color:#8E44AD; }
+/* Status active colours */
+.ra-filter-btn.active[data-value="active"]   { background:var(--clr-danger);  border-color:var(--clr-danger); }
+.ra-filter-btn.active[data-value="resolved"] { background:var(--clr-success); border-color:var(--clr-success); }
+
+.ra-filter-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    max-width: 260px;
+    background: var(--clr-surface-2);
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--border-radius);
+    padding: 0 10px;
+    transition: border-color var(--transition);
+}
+.ra-filter-search:focus-within { border-color:var(--clr-primary); background:var(--clr-surface); }
+.ra-filter-search svg { width:14px; height:14px; color:var(--clr-text-light); flex-shrink:0; }
+.ra-filter-search input {
+    flex:1; border:none; background:transparent;
+    font-family:var(--font-body); font-size:0.85rem; color:var(--clr-text);
+    padding:7px 0; outline:none;
+}
+.ra-filter-search input::placeholder { color:var(--clr-text-light); }
+
+/* ── Table ───────────────────────────────────────────────────── */
+.ra-count-badge {
+    font-size:0.75rem; font-weight:600; color:var(--clr-text-muted);
+    background:var(--clr-surface-2); border:1px solid var(--clr-border);
+    padding:2px 9px; border-radius:20px;
+}
+
+.table-loading {
+    display:flex; align-items:center; justify-content:center;
+    gap:8px; padding:32px; color:var(--clr-text-muted); font-size:0.875rem;
+}
+.table-loading svg { width:16px; height:16px; animation:ra-spin 1s linear infinite; }
+
+.table-empty {
+    text-align:center; padding:40px 20px;
+    color:var(--clr-text-light); font-size:0.875rem;
+}
+.table-empty svg { width:32px; height:32px; color:var(--clr-border); display:block; margin:0 auto 10px; }
+
+.table-actions { display:flex; gap:4px; }
+.card-body.no-pad { padding:0; }
+
+/* Resolved row — greyed out */
+tr.ra-row-resolved td { opacity:0.45; }
+tr.ra-row-resolved td:last-child { opacity:1; }
+
+/* Severity badges */
+.badge-low      { background:#FFF8E1; color:#B8860B; }
+.badge-moderate { background:#FFF0E0; color:#E67E22; }
+.badge-high     { background:#FDECEA; color:#C0392B; }
+.badge-critical { background:#F8D7DA; color:#7B0000; font-weight:700; }
+
+/* Type badges */
+.badge-flood        { background:#E3F0FB; color:#1A6FA8; }
+.badge-landslide    { background:#F5EEE8; color:#8B4513; }
+.badge-accident     { background:#FDECEA; color:#C0392B; }
+.badge-road_closure { background:#EEEEEE; color:#555; }
+.badge-other        { background:#F0E8F8; color:#8E44AD; }
+
+/* Resolve button */
+.btn-resolve {
+    color: var(--clr-success);
+    border-color: transparent;
+}
+.btn-resolve:hover {
+    background: #E8F5EE;
+    border-color: var(--clr-success);
+}
+
+/* ── Map ─────────────────────────────────────────────────────── */
+.ra-map-card { margin-top:16px; }
+.ra-map-header-left p { font-size:0.8rem; color:var(--clr-text-muted); margin-top:2px; }
+.ra-map-toolbar { display:flex; gap:8px; align-items:center; }
+
+.ra-btn-save {
+    background: var(--clr-success);
+    color: #fff;
+    border: 1.5px solid var(--clr-success);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition);
+}
+.ra-btn-save:hover { background:#27ae60; border-color:#27ae60; }
+.ra-btn-save svg { width:13px; height:13px; }
+
+.ra-draw-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #EBF4FF;
+    border-bottom: 1px solid #C5DFF8;
+    font-size: 0.825rem;
+    color: #1A6FA8;
+}
+.ra-draw-status svg { width:14px; height:14px; flex-shrink:0; }
+.ra-draw-status.warning { background:#FFF8E1; border-color:#FFE08A; color:#B8860B; }
+
+.ra-map-wrap {
+    position: relative;
+    height: 440px;
+}
+
+#raMap {
+    height: 100%;
+    width: 100%;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    cursor: crosshair;
+}
+
+/* Floating radius badge shown during draw */
+.ra-radius-badge {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(18,40,64,0.82);
+    color: #fff;
+    font-size: 0.775rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 500;
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+}
+
+/* ── Form ────────────────────────────────────────────────────── */
+.req { color:var(--clr-danger); margin-left:2px; }
+.form-hint { color:var(--clr-text-muted); font-weight:400; font-size:0.775rem; margin-left:4px; }
+
+/* Location + radius summary row */
+.ra-location-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.ra-location-info {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex: 1;
+    min-width: 180px;
+    padding: 8px 12px;
+    background: var(--clr-surface-2);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--border-radius);
+    font-size: 0.825rem;
+    color: var(--clr-text-muted);
+}
+.ra-location-info svg { width:14px; height:14px; flex-shrink:0; }
+.ra-location-info.has-location { background:#EBF4FF; border-color:#C5DFF8; color:#1A6FA8; }
+
+/* ── Photo Upload ────────────────────────────────────────────── */
+.ra-photo-wrap { display:flex; flex-direction:column; gap:8px; }
+
+.ra-photo-drop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 24px 16px;
+    border: 2px dashed var(--clr-border);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition);
+    color: var(--clr-text-muted);
+    font-size: 0.825rem;
+    text-align: center;
+}
+.ra-photo-drop svg { width:24px; height:24px; color:var(--clr-text-light); }
+.ra-photo-drop:hover, .ra-photo-drop.drag-over {
+    border-color: var(--clr-primary);
+    background: rgba(26,58,92,0.04);
+    color: var(--clr-primary);
+}
+.ra-photo-drop:hover svg, .ra-photo-drop.drag-over svg { color:var(--clr-primary); }
+
+.ra-photo-existing, .ra-photo-preview { position:relative; display:inline-block; }
+
+.ra-photo-existing img, .ra-photo-preview img {
+    width:100%; max-height:160px; object-fit:cover;
+    border-radius:var(--border-radius); border:1px solid var(--clr-border); display:block;
+}
+
+.ra-photo-remove {
+    position:absolute; top:6px; right:6px;
+    width:24px; height:24px;
+    background:rgba(0,0,0,0.55); color:#fff;
+    border:none; border-radius:50%; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background var(--transition);
+}
+.ra-photo-remove:hover { background:var(--clr-danger); }
+.ra-photo-remove svg { width:12px; height:12px; }
+
+/* ── Resolve modal icon ──────────────────────────────────────── */
+.ra-resolve-icon { color:var(--clr-success) !important; }
+.ra-resolve-icon svg { color:var(--clr-success) !important; }
+
+/* Resolve button (solid green) */
+.btn-success-solid {
+    background: var(--clr-success);
+    color: #fff;
+    border: 1.5px solid var(--clr-success);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition);
+}
+.btn-success-solid:hover { background:#27ae60; border-color:#27ae60; }
+.btn-success-solid svg { width:14px; height:14px; }
+.btn-success-solid:disabled { opacity:0.6; cursor:not-allowed; }
+
+/* ── Circle highlight pulse ──────────────────────────────────── */
+@keyframes ra-pulse {
+    0%   { stroke-width:3; stroke-opacity:0.9; }
+    50%  { stroke-width:6; stroke-opacity:0.5; }
+    100% { stroke-width:3; stroke-opacity:0.9; }
+}
+.ra-circle-highlight path { animation:ra-pulse 1.2s ease infinite; }
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes ra-spin  { to { transform:rotate(360deg); } }
+@keyframes ra-toast { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── Edit Zone on Map button ─────────────────────────────────── */
+.ra-btn-move {
+    color: var(--clr-primary);
+    border-color: transparent;
+}
+.ra-btn-move:hover {
+    background: #EBF4FF;
+    border-color: var(--clr-primary);
+}
+
+/* ── Zone-edit drag handles ──────────────────────────────────── */
+.ze-handle {
+    border-radius: 50%;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+    cursor: grab;
+}
+.ze-handle:active { cursor: grabbing; }
+
+/* Center marker: larger, filled navy */
+.ze-center {
+    width: 18px;
+    height: 18px;
+    background: #1A3A5C;
+    border: 3px solid #fff;
+}
+
+/* Edge (radius) handle: smaller, white with danger border */
+.ze-edge {
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border: 2.5px solid #E74C3C;
+}
