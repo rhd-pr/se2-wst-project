@@ -116,9 +116,6 @@
 }
 
 /* ── Mini Map ──────────────────────────────────────────────── */
-<<<<<<< HEAD
-.dash-map-wrap { position: relative; height: 360px; }
-=======
 .dash-map-wrap {
     position: relative;
     height: 360px;
@@ -127,7 +124,6 @@
     isolation: isolate;
     z-index: 0;
 }
->>>>>>> 4ca5204 (Mobile Responsiveness)
 
 #dashMap { width: 100%; height: 100%; }
 
