@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ── Leaflet
-    var map = L.map('apMap', { center: [13.1800, 123.5950], zoom: 14, zoomControl: false });
+    var map = L.map('apMap', { center: [12.9433, 124.0147], zoom: 10, zoomControl: false });
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors', maxZoom: 19

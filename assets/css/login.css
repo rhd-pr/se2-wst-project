@@ -21,6 +21,7 @@
 
 html, body {
     height: 100%;
+    min-height: 100vh;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
 }
@@ -445,16 +446,110 @@ body::after {
 .login-form-footer a:hover { color: var(--clr-primary); }
 
 /* ── Responsive ─────────────────────────────────────────────── */
+
+/* ── Tablet (≤680px) — hide left panel, single column ───────── */
 @media (max-width: 680px) {
-    body { padding: 16px; align-items: flex-start; padding-top: 32px; }
+    body {
+        padding: 20px 16px;
+        align-items: center;
+        overflow-y: auto;
+    }
 
     .login-layout {
         grid-template-columns: 1fr;
-        border-radius: 16px;
+        border-radius: 18px;
         min-height: unset;
+        max-width: 440px;
+        box-shadow:
+            0 24px 60px rgba(0,0,0,0.5),
+            0 0 0 1px rgba(255,255,255,0.07);
     }
 
     .login-panel { display: none; }
 
-    .login-form-panel { padding: 36px 28px; }
+    .login-form-panel {
+        padding: 36px 32px 32px;
+    }
+}
+
+/* ── Mobile (≤420px) — tight 375px phones ───────────────────── */
+@media (max-width: 420px) {
+    body {
+        padding: 16px 12px;
+        align-items: center;
+        min-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .login-layout {
+        border-radius: 14px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .login-form-panel {
+        padding: 28px 20px 24px;
+    }
+
+    /* Header */
+    .login-form-header {
+        margin-bottom: 20px;
+    }
+
+    .login-form-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .login-form-header p {
+        font-size: 0.8rem;
+    }
+
+    /* Alert */
+    .login-alert {
+        font-size: 0.8rem;
+        padding: 9px 11px;
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    /* Fields */
+    .login-field {
+        margin-bottom: 14px;
+    }
+
+    .login-field label {
+        font-size: 0.775rem;
+    }
+
+    .login-input-wrap input {
+        font-size: 0.875rem;   /* keep readable, avoids iOS auto-zoom (≥16px is ideal but 14px is okay with no zoom) */
+        padding: 10px 12px;
+        border-radius: 7px;
+    }
+
+    /* Prevent iOS from zooming on input focus — set font-size ≥16px */
+    .login-input-wrap input[type="email"],
+    .login-input-wrap input[type="password"],
+    .login-input-wrap input[type="text"] {
+        font-size: 16px;
+    }
+
+    /* Submit button */
+    .login-btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        margin-top: 4px;
+    }
+
+    /* Form footer */
+    .login-form-footer {
+        margin-top: 18px;
+        padding-top: 14px;
+    }
+
+    .login-form-footer a {
+        font-size: 0.78rem;
+    }
 }

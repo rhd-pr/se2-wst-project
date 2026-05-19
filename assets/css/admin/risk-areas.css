@@ -346,3 +346,159 @@ tr.ra-row-resolved td:last-child { opacity:1; }
     background: #fff;
     border: 2.5px solid #E74C3C;
 }
+
+/* ══ RESPONSIVE ══════════════════════════════════════════════ */
+
+/* ── Tablet (≤768px) ──────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Page header — stack vertically */
+    .page-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Filters — stack filter groups vertically */
+    .ra-filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    .ra-filter-group {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Search takes full width */
+    .ra-filter-search {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Map card header — allow wrapping */
+    .ra-map-card .card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    /* Map toolbar wraps below the title */
+    .ra-map-toolbar {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Map — slightly shorter on tablet */
+    .ra-map-wrap { height: 360px; }
+
+    /* Draw status banner */
+    .ra-draw-status {
+        font-size: 0.775rem;
+        padding: 7px 14px;
+    }
+
+    /* Location row — allow stacking */
+    .ra-location-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .ra-location-info {
+        min-width: unset;
+        width: 100%;
+    }
+}
+
+/* ── Mobile (≤480px) ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* Filter chips — smaller and tighter */
+    .ra-filter-btn {
+        font-size: 0.75rem;
+        padding: 4px 9px;
+    }
+    .ra-filter-btn svg { width: 11px; height: 11px; }
+
+    /* Table — hide less-critical columns, keep Name + Type + Severity + Status + Actions */
+    #raTable thead tr th:nth-child(4),  /* Radius */
+    #raTable thead tr th:nth-child(6),  /* Reported */
+    #raTable tbody tr td:nth-child(4),
+    #raTable tbody tr td:nth-child(6) {
+        display: none;
+    }
+
+    /* Name column — prevent overflow */
+    #raTable tbody tr td:nth-child(1) {
+        max-width: 110px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.825rem;
+    }
+
+    /* Tighten table cell padding on mobile */
+    #raTable thead th,
+    #raTable tbody td {
+        padding: 9px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Map — compact height on phone */
+    .ra-map-wrap { height: 280px; }
+
+    /* Map toolbar — stack buttons full width */
+    .ra-map-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ra-map-toolbar .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .ra-map-toolbar .ra-btn-save {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Radius badge — smaller text */
+    .ra-radius-badge {
+        font-size: 0.72rem;
+        padding: 4px 12px;
+    }
+
+    /* Form rows — stack to single column */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Modal — ensure it doesn't overflow viewport */
+    .modal {
+        max-height: 92vh;
+        overflow-y: auto;
+    }
+
+    /* Photo drop area — smaller */
+    .ra-photo-drop {
+        padding: 16px 12px;
+        font-size: 0.775rem;
+    }
+    .ra-photo-drop svg { width: 20px; height: 20px; }
+
+    /* Draw status banner — smaller on phone */
+    .ra-draw-status {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        gap: 6px;
+    }
+
+    /* Leaflet map — contain z-index */
+    .ra-map-wrap {
+        isolation: isolate;
+        z-index: 0;
+    }
+}

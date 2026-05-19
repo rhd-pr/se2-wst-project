@@ -246,3 +246,119 @@
     letter-spacing: 0.05em;
     padding: 12px 0 6px;
 }
+
+/* ══ RESPONSIVE ══════════════════════════════════════════════ */
+
+/* ── Tablet (≤768px) ──────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Page header — stack vertically */
+    .page-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Export button takes full width */
+    .page-header .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Filters — stack vertically */
+    .al-filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    .al-filter-group {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Table select — full width */
+    .al-filter-select {
+        width: 100%;
+        min-width: unset;
+    }
+
+    /* Search takes full width */
+    .al-filter-search {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Pagination — center on tablet */
+    .al-pagination {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+    }
+
+    /* Diff modal — full width on tablet */
+    .al-diff-modal {
+        max-width: 100%;
+        max-height: 85vh;
+    }
+}
+
+/* ── Mobile (≤480px) ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* Filter chips — smaller */
+    .al-filter-btn {
+        font-size: 0.75rem;
+        padding: 4px 9px;
+    }
+    .al-filter-btn svg { width: 11px; height: 11px; }
+
+    /* Table — hide less-critical columns, keep When + Action + User + Details */
+    #auditTable thead tr th:nth-child(4),  /* Table */
+    #auditTable thead tr th:nth-child(5),  /* Record */
+    #auditTable tbody tr td:nth-child(4),
+    #auditTable tbody tr td:nth-child(5) {
+        display: none;
+    }
+
+    /* User column — prevent overflow */
+    #auditTable tbody tr td:nth-child(2) {
+        max-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.825rem;
+    }
+
+    /* Tighten table cell padding */
+    #auditTable thead th,
+    #auditTable tbody td {
+        padding: 9px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Timestamp — hide relative time to save space */
+    .al-time-rel { display: none; }
+    .al-time { font-size: 0.775rem; }
+
+    /* Pagination buttons — tighter */
+    .al-page-btn {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.775rem;
+    }
+
+    /* Diff table — tighter padding */
+    .al-diff-table th,
+    .al-diff-table td {
+        padding: 6px 10px;
+        font-size: 0.775rem;
+    }
+
+    /* Modal — ensure it doesn't overflow viewport */
+    .modal {
+        max-height: 92vh;
+        overflow-y: auto;
+    }
+}

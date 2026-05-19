@@ -245,3 +245,160 @@
     background: #C0392B;
     border-color: #C0392B;
 }
+
+/* ══ RESPONSIVE ══════════════════════════════════════════════ */
+
+/* ── Tablet (≤768px) ──────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Page header — stack vertically */
+    .page-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Filters — stack filter groups vertically */
+    .rt-filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    .rt-filter-group {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Search takes full width */
+    .rt-filter-search {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Map card header — allow wrapping */
+    .rt-map-card .card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    /* Draw toolbar wraps below the title */
+    .rt-draw-toolbar {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Map — slightly shorter on tablet */
+    .rt-map-wrap { height: 360px; }
+
+    /* Legend — keep it but reduce padding */
+    .rt-legend {
+        padding: 8px 12px;
+        font-size: 0.72rem;
+    }
+
+    /* Draw status banner */
+    .rt-draw-status {
+        font-size: 0.775rem;
+        padding: 7px 14px;
+    }
+}
+
+/* ── Mobile (≤480px) ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* Filter chips — smaller and tighter */
+    .rt-filter-btn {
+        font-size: 0.75rem;
+        padding: 4px 9px;
+    }
+
+    /* Table — hide less-critical columns, keep Name + Type + Status + Actions */
+    #rtTable thead tr th:nth-child(3),  /* Origin */
+    #rtTable thead tr th:nth-child(4),  /* Destination */
+    #rtTable thead tr th:nth-child(6),  /* Points */
+    #rtTable tbody tr td:nth-child(3),
+    #rtTable tbody tr td:nth-child(4),
+    #rtTable tbody tr td:nth-child(6) {
+        display: none;
+    }
+
+    /* Name column — prevent overflow */
+    #rtTable tbody tr td:nth-child(1) {
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.825rem;
+    }
+
+    /* Tighten table cell padding on mobile */
+    #rtTable thead th,
+    #rtTable tbody td {
+        padding: 9px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Map — compact height on phone */
+    .rt-map-wrap { height: 280px; }
+
+    /* Draw toolbar — stack buttons full width */
+    .rt-draw-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rt-draw-toolbar .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Legend — move to top-right and shrink */
+    .rt-legend {
+        bottom: auto;
+        top: 10px;
+        left: auto;
+        right: 10px;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+
+    .rt-legend-line { width: 18px; }
+
+    /* Points info row */
+    .rt-points-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .rt-points-row .rt-points-info {
+        width: 100%;
+    }
+
+    /* Form rows — stack to single column */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Modal — ensure it doesn't overflow viewport */
+    .modal {
+        max-height: 92vh;
+        overflow-y: auto;
+    }
+
+    /* Draw status banner — smaller on phone */
+    .rt-draw-status {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        gap: 6px;
+    }
+
+    /* Leaflet map — contain z-index */
+    .rt-map-wrap {
+        isolation: isolate;
+        z-index: 0;
+    }
+}

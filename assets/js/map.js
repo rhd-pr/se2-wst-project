@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const MAP_CENTER = [13.1800, 123.5950];
-    const MAP_ZOOM   = 14;
+    const MAP_CENTER = [12.9433, 124.0050];
+    const MAP_ZOOM   = 10;
 
     const COLORS = {
         transport: '#1A6FA8', emergency: '#C0392B', facility: '#2E8B57',
@@ -294,6 +294,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setupPanel('legendToggle', 'legendBody', 'legendChevron');
     setupPanel('filterToggle', 'filterBody', 'filterChevron');
+
+    // Auto-collapse both panels on mobile so they don't block the map
+    if (window.innerWidth <= 480) {
+        ['legendBody','filterBody'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('collapsed');
+        });
+        ['legendChevron','filterChevron'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('collapsed');
+        });
+    }
 
     // ── Layer checkboxes ────────────────────────────────────────
     document.querySelectorAll('.filter-layer-cb').forEach(cb => {

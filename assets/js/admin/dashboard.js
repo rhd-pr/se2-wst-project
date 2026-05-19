@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const MAP_CENTER = [13.1800, 123.5950];
+    const MAP_CENTER = [12.9433, 124.0147];
 
     // ── Timestamp ───────────────────────────────────────────────
     function setTimestamp() {
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ────────────────────────────────────────────────────────────
     const map = L.map('dashMap', {
         center: MAP_CENTER,
-        zoom: 13,
+        zoom: 10,
         zoomControl: true,
         scrollWheelZoom: true,
     });

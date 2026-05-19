@@ -197,3 +197,86 @@
     from { opacity:0; transform:translateY(8px); }
     to   { opacity:1; transform:translateY(0); }
 }
+
+/* ══ RESPONSIVE ══════════════════════════════════════════════ */
+
+/* ── Tablet (≤768px) ──────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Page header — stack vertically */
+    .page-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Add User button — full width */
+    .page-header .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Filters — stack vertically */
+    .usr-filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    /* Search takes full width */
+    .usr-filter-search {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* ── Mobile (≤480px) ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* Table — hide less-critical columns, keep User + Role + Actions */
+    #usersTable thead tr th:nth-child(2),  /* Username */
+    #usersTable thead tr th:nth-child(3),  /* Email */
+    #usersTable thead tr th:nth-child(5),  /* Joined */
+    #usersTable tbody tr td:nth-child(2),
+    #usersTable tbody tr td:nth-child(3),
+    #usersTable tbody tr td:nth-child(5) {
+        display: none;
+    }
+
+    /* User cell — tighter on mobile */
+    .usr-cell { gap: 8px; }
+
+    /* Avatar — slightly smaller */
+    .usr-avatar {
+        width: 30px;
+        height: 30px;
+        font-size: 0.75rem;
+    }
+
+    .usr-name { font-size: 0.825rem; }
+
+    /* "You" badge — smaller */
+    .usr-you-badge {
+        font-size: 0.65rem;
+        padding: 1px 5px;
+        margin-left: 4px;
+    }
+
+    /* Tighten table cell padding */
+    #usersTable thead th,
+    #usersTable tbody td {
+        padding: 9px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Form rows — stack to single column */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Modal — ensure it doesn't overflow viewport */
+    .modal {
+        max-height: 92vh;
+        overflow-y: auto;
+    }
+}

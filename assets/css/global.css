@@ -828,7 +828,7 @@ select {
     flex-shrink: 0;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 800;
 }
 
 .topbar-left {
@@ -966,31 +966,228 @@ select {
     height: 16px;
 }
 
-/* ── Responsive ────────────────────────────────────────────── */
+/* ══ RESPONSIVE ══════════════════════════════════════════════ */
+
+/* ── Tablet (≤768px) ──────────────────────────────────────── */
 @media (max-width: 768px) {
+
+    /* ── Sidebar: slide off-canvas ── */
     .sidebar {
         transform: translateX(-100%);
-        transition: transform 200ms ease;
+        transition: transform 220ms ease;
+        z-index: 900; /* above topbar overlay */
     }
 
     .sidebar.open {
         transform: translateX(0);
+        box-shadow: 4px 0 24px rgba(0,0,0,0.25);
     }
 
+    /* Dim backdrop behind open sidebar */
+    .sidebar.open::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        left: var(--sidebar-width);
+        background: rgba(10, 20, 35, 0.4);
+        z-index: -1;
+    }
+
+    /* ── Admin shell ── */
     .admin-main {
         margin-left: 0;
     }
 
+    /* ── Topbar ── */
+    .topbar {
+        padding: 0 16px;
+        gap: 10px;
+    }
+
+    /* Show hamburger */
     .sidebar-toggle {
         display: flex;
     }
 
+    /* Breadcrumb — truncate long paths */
+    .breadcrumb {
+        font-size: 0.775rem;
+        overflow: hidden;
+        max-width: 200px;
+    }
+
+    /* Hide all but first and last breadcrumb items on tablet */
+    .breadcrumb-item:not(:first-child):not(:last-child),
+    .breadcrumb-sep:not(:last-of-type) {
+        display: none;
+    }
+
+    /* User info — hide role on tablet to save space */
+    .topbar-user-role {
+        display: none;
+    }
+
+    /* ── Content ── */
     .admin-content {
         padding: 20px 16px;
     }
 
+    /* ── Forms ── */
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    /* ── Modals ── */
+    .modal-backdrop {
+        padding: 12px;
+        align-items: flex-end; /* slide up from bottom on tablet */
+    }
+
+    .modal {
+        max-width: 100%;
+        max-height: 88vh;
+        border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        margin-bottom: 0;
+    }
+
+    .modal-sm {
+        max-width: 100%;
+    }
+
+    /* ── Cards ── */
+    .card-header {
+        padding: 14px 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+}
+
+/* ── Mobile (≤480px) ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* ── Topbar ── */
+    .topbar {
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    /* Hide breadcrumb entirely on very small screens — just show toggle + user */
+    .breadcrumb {
+        display: none;
+    }
+
+    /* User name — truncate if long */
+    .topbar-user-name {
+        max-width: 90px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.775rem;
+    }
+
+    /* Avatar — slightly smaller */
+    .topbar-user-avatar {
+        width: 28px;
+        height: 28px;
+    }
+    .topbar-user-avatar svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    /* Logout button — tighter */
+    .topbar-logout {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* ── Content ── */
+    .admin-content {
+        padding: 16px 12px;
+    }
+
+    /* ── Sidebar brand — tighter on very small screens ── */
+    .sidebar-brand {
+        padding: 14px 12px;
+    }
+
+    .sidebar-brand-name {
+        font-size: 0.9rem;
+    }
+
+    .sidebar-brand-sub {
+        font-size: 0.65rem;
+    }
+
+    /* ── Cards ── */
+    .card-header {
+        padding: 12px 14px;
+    }
+
+    .card-header h2,
+    .card-header h3 {
+        font-size: 0.875rem;
+    }
+
+    .card-body {
+        padding: 14px;
+    }
+
+    /* ── Tables ── */
+    thead th {
+        padding: 8px 10px;
+        font-size: 0.7rem;
+    }
+
+    tbody td {
+        padding: 9px 10px;
+        font-size: 0.825rem;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+        font-size: 0.825rem;
+        padding: 7px 13px;
+    }
+
+    .btn-sm {
+        font-size: 0.75rem;
+        padding: 4px 9px;
+    }
+
+    /* ── Modal footer — stack buttons on very small screens ── */
+    .modal-footer {
+        flex-direction: column-reverse;
+        gap: 6px;
+        padding: 12px 16px;
+    }
+
+    .modal-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .modal-body {
+        padding: 16px;
+    }
+
+    .modal-header {
+        padding: 14px 16px 12px;
+    }
+
+    /* ── Logout modal icon — tighter ── */
+    .logout-modal-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .logout-modal-icon svg {
+        width: 18px;
+        height: 18px;
     }
 }
 

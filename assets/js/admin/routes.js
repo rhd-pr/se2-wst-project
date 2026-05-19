@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (missing.length) { console.error('[routes.js] Missing elements:', missing.join(', ')); return; }
 
     // ── Leaflet map
-    var map = L.map('rtMap', { center: [13.1800, 123.5950], zoom: 13, zoomControl: false });
+    var map = L.map('rtMap', { center: [12.9433, 124.0147], zoom: 10, zoomControl: false });
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors', maxZoom: 19

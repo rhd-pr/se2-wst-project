@@ -760,19 +760,122 @@ a { text-decoration: none; }
 }
 
 @media (max-width: 640px) {
-    .hero { padding: 80px 20px 48px; }
-    .hero-body { gap: 32px; }
-    .hero-stats { padding: 16px 20px; }
-    .hero-stat  { padding: 0 16px; }
+    .hero-image-slot { display: none !important; }
+    .hero { padding: 80px 20px 40px; }
+    .hero-body { gap: 24px; }
+    .hero-stats {
+        padding: 14px 12px;
+        gap: 0;
+        row-gap: 12px;
+    }
+    .hero-stat  { padding: 0 12px; }
     .hero-stat-divider { display: none; }
-    .nav { padding: 0 20px; }
-    .features { padding: 64px 20px; }
-    .cta { padding: 64px 20px; }
+    .nav { padding: 0 16px; }
+    .features { padding: 56px 16px; }
+    .cta { padding: 56px 16px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
+/* ── Mobile (375 × 812 target) ──────────────────────────────── */
 @media (max-width: 480px) {
-    .hero-actions { flex-direction: column; width: 100%; }
+
+    /* Navbar — keep brand + one icon button, hide the text link */
+    .nav { padding: 0 14px; height: 56px; }
+    .nav-link span { display: none; }          /* hide "Public Map" text */
+    .nav-link { padding: 7px 10px; }
+    .nav-btn  { padding: 7px 12px; font-size: 0.8rem; }
+
+    /* Hero */
+    .hero { padding: 72px 16px 36px; }
+    .hero-body { gap: 20px; }
+    .hero-image-slot { display: none !important; }
+
+    /* Eyebrow pill — prevent overflow */
+    .hero-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 1px;
+        padding: 5px 10px;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    /* Title sizing */
+    .hero-title {
+        font-size: clamp(2rem, 11vw, 2.8rem);
+        line-height: 1.1;
+    }
+
+    /* Description */
+    .hero-desc {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    /* CTA buttons — full width stack */
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
     .hero-btn-primary,
-    .hero-btn-secondary { width: 100%; justify-content: center; }
+    .hero-btn-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* Stats bar — 2×2 grid on small screens */
+    .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 14px;
+        border-radius: 12px;
+        margin-top: 24px;
+    }
+    .hero-stat {
+        padding: 10px 8px;
+        background: rgba(255,255,255,0.04);
+        border-radius: 8px;
+        gap: 8px;
+    }
+    .hero-stat-divider { display: none; }
+    .hero-stat-value   { font-size: 1.25rem; }
+    .hero-stat-label   { font-size: 0.6rem; letter-spacing: 0.5px; }
+    .hero-stat-icon    { width: 32px; height: 32px; }
+    .hero-stat-icon svg { width: 14px; height: 14px; }
+
+    /* Features */
+    .features { padding: 48px 14px; }
+    .features-grid { grid-template-columns: 1fr; gap: 14px; }
+    .feature-card  { padding: 20px; }
+    .section-title { font-size: clamp(1.5rem, 7vw, 2rem); }
+    .section-desc  { font-size: 0.875rem; }
+
+    /* CTA */
+    .cta { padding: 48px 16px; }
+    .cta-inner h2 { font-size: clamp(1.5rem, 8vw, 2rem); }
+    .cta-inner p  { font-size: 0.875rem; }
+    .cta-inner .hero-btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Footer */
+    .footer { padding: 24px 14px; }
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    .footer-links { flex-wrap: wrap; gap: 12px; }
+    .footer-copy  { font-size: 0.68rem; }
+
+    /* Deco rings — hide on very small screens to avoid scroll bleed */
+    .deco-ring-2 { display: none; }
 }

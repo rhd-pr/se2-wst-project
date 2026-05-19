@@ -116,7 +116,18 @@
 }
 
 /* ── Mini Map ──────────────────────────────────────────────── */
+<<<<<<< HEAD
 .dash-map-wrap { position: relative; height: 360px; }
+=======
+.dash-map-wrap {
+    position: relative;
+    height: 360px;
+    /* Contain Leaflet's internal z-index stack so it never bleeds
+       above the sticky admin topbar when the user scrolls */
+    isolation: isolate;
+    z-index: 0;
+}
+>>>>>>> 4ca5204 (Mobile Responsiveness)
 
 #dashMap { width: 100%; height: 100%; }
 
@@ -270,15 +281,117 @@
 .card-body.no-pad { padding: 0; }
 
 /* ── Responsive ────────────────────────────────────────────── */
+
+/* ── Tablet (≤1100px) ──────────────────────────────────────── */
 @media (max-width: 1100px) {
     .dash-stat-grid { grid-template-columns: repeat(2, 1fr); }
     .dash-main-grid { grid-template-columns: 1fr; }
-    .dash-col-right { position: static; display: grid; grid-template-columns: 1fr 1fr; }
+    .dash-col-right {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    /* Risk zones card spans full width in the 2-col right col */
+    .dash-col-right .card:first-child { grid-column: 1 / -1; }
 }
 
-@media (max-width: 640px) {
-    .dash-stat-grid { grid-template-columns: 1fr 1fr; }
-    .dash-col-right { grid-template-columns: 1fr; }
-    .dash-audit-filters { flex-direction: column; gap: 6px; }
-    .dash-audit-select  { min-width: 0; width: 100%; }
+/* ── Small tablet / large phone (≤768px) ───────────────────── */
+@media (max-width: 768px) {
+
+    /* Page header — stack vertically */
+    .dash-page-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .dash-header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Stat cards — 2 columns */
+    .dash-stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    /* Stat card internals — tighter */
+    .dash-stat-card { padding: 14px 14px; gap: 12px; }
+    .dash-stat-icon { width: 38px; height: 38px; border-radius: 8px; }
+    .dash-stat-icon svg { width: 18px; height: 18px; }
+    .dash-stat-value { font-size: 1.6rem; }
+    .dash-stat-label { font-size: 0.75rem; }
+    .dash-stat-sub   { font-size: 0.68rem; }
+
+    /* Right col — single column */
+    .dash-col-right {
+        grid-template-columns: 1fr;
+    }
+    .dash-col-right .card:first-child { grid-column: auto; }
+
+    /* Mini map — shorter on tablet */
+    .dash-map-wrap { height: 280px; }
+
+    /* Layer toggles — allow wrapping */
+    .dash-layer-toggles { flex-wrap: wrap; gap: 3px; }
+    .dash-layer-btn { width: 28px; height: 28px; }
+    .dash-layer-btn svg { width: 12px; height: 12px; }
+
+    /* Activity feed — single column */
+    .dash-activity-full .card-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Mobile (≤480px) ───────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* Stat grid — still 2 col but more compact */
+    .dash-stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    /* Stat card — hide the arrow on very small screens to save space */
+    .dash-stat-arrow { display: none; }
+    .dash-stat-value { font-size: 1.4rem; }
+    .dash-stat-sub   { display: none; } /* too much text at 375px */
+
+    /* Card header — prevent overflow with layer buttons */
+    .card-header {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .dash-layer-toggles {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+
+    /* Mini map — compact height on phone */
+    .dash-map-wrap { height: 220px; }
+
+    /* Map footer */
+    .dash-map-footer { padding: 8px 12px; }
+    .dash-open-map-link { font-size: 0.75rem; }
+
+    /* Risk list */
+    .dash-risk-name { font-size: 0.825rem; }
+    .dash-risk-meta { font-size: 0.72rem; }
+    .dash-risk-badge { font-size: 0.68rem; padding: 2px 6px; }
+
+    /* Breakdown bars — tighter label */
+    .dash-route-stat-label { width: 74px; font-size: 0.775rem; }
+    .dash-route-stat-count { font-size: 0.775rem; }
+
+    /* Activity feed */
+    .dash-activity-item { padding: 10px 12px; gap: 8px; }
+    .dash-activity-icon { width: 24px; height: 24px; }
+    .dash-activity-icon svg { width: 11px; height: 11px; }
+    .dash-activity-text { font-size: 0.775rem; }
+    .dash-activity-time { font-size: 0.68rem; }
+
+    /* Timestamp — hide on very small, save header space */
+    .dash-timestamp { display: none; }
 }

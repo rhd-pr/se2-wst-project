@@ -318,9 +318,134 @@ html, body { height: 100%; font-family: var(--font-body); -webkit-font-smoothing
     .map-brand-sub { display:none; }
     .map-nav-link span { display:none; }
 }
-@media (max-width: 600px) {
-    .map-overview-bar { right:8px; }
-    .map-filter-panel { bottom:16px; right:8px; }
-    .map-legend { bottom:16px; left:8px; }
-    .map-drawer { width:85vw; }
+
+/* ── Tablet (≤768px) ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Topbar: stack into 2 rows */
+    :root { --topbar-height: 100px; }
+
+    .map-topbar {
+        flex-wrap: wrap;
+        height: var(--topbar-height);
+        padding: 8px 12px;
+        gap: 8px;
+        align-content: center;
+    }
+
+    /* Row 1: brand + nav links */
+    .map-brand { order: 1; }
+    .map-topbar-right { order: 2; margin-left: auto; gap: 4px; }
+
+    /* Row 2: search takes full width */
+    .map-search-wrap {
+        order: 3;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* Overview bar: scrollable single row, left-aligned */
+    .map-overview-bar {
+        top: calc(var(--topbar-height) + 8px);
+        left: 8px;
+        right: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        pointer-events: auto;
+        scrollbar-width: none;
+        padding: 0 2px;
+        border-radius: 10px;
+    }
+    .map-overview-bar::-webkit-scrollbar { display: none; }
+
+    .map-overview-stat { padding: 6px 12px; }
+    .map-overview-value { font-size: 1rem; }
+    .map-overview-label { font-size: 0.6rem; }
+
+    /* Panels: both anchored to bottom, slightly reduced */
+    .map-legend       { bottom: 12px; left: 8px; min-width: 170px; }
+    .map-filter-panel { bottom: 12px; right: 8px; min-width: 185px; }
+}
+
+/* ── Mobile (≤480px) ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    :root { --topbar-height: 96px; }
+
+    .map-topbar { padding: 8px 10px; gap: 6px; }
+
+    /* Hide brand subtitle & nav link text */
+    .map-brand-sub    { display: none; }
+    .map-nav-link span { display: none; }
+    .map-nav-link     { padding: 5px 8px; }
+
+    /* Nav link admin button — keep compact */
+    .map-nav-link--admin {
+        background: rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.2);
+    }
+
+    /* Overview bar — horizontal scroll strip */
+    .map-overview-bar {
+        top: calc(var(--topbar-height) + 6px);
+        left: 6px;
+        right: 6px;
+        flex-wrap: nowrap;
+        border-radius: 8px;
+    }
+    .map-overview-stat  { padding: 5px 10px; white-space: nowrap; }
+    .map-overview-value { font-size: 0.9rem; }
+    .map-overview-label { font-size: 0.55rem; }
+    .map-overview-sep   { height: 22px; }
+
+    /* Panels — collapse by default on mobile, make them narrower */
+    .map-legend {
+        bottom: 10px;
+        left: 6px;
+        min-width: 0;
+        width: calc(50vw - 12px);
+        max-width: 185px;
+    }
+    .map-filter-panel {
+        bottom: 10px;
+        right: 6px;
+        min-width: 0;
+        width: calc(50vw - 12px);
+        max-width: 190px;
+    }
+
+    /* Panel body text size reduction */
+    .legend-item,
+    .filter-toggle-row { font-size: 0.75rem; }
+    .legend-group-label,
+    .filter-group-label { font-size: 0.62rem; }
+    .map-panel-body { padding: 10px; }
+
+    /* Filter chips — smaller */
+    .filter-chip { font-size: 0.7rem; padding: 3px 8px; }
+
+    /* Detail modal — full screen bottom sheet on mobile */
+    .map-modal-backdrop {
+        align-items: flex-end;
+        padding: 0;
+    }
+    .map-modal {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 16px 16px 0 0;
+        max-height: 85vh;
+    }
+
+    /* Popup — constrain width */
+    .map-popup { min-width: 160px; max-width: 220px; padding: 12px 13px; }
+    .map-popup-title { font-size: 0.85rem; }
+
+    /* Search results dropdown */
+    .map-search-results { max-height: 240px; }
+
+    /* Zoom control — nudge down */
+    .leaflet-top.leaflet-left {
+        top: calc(var(--topbar-height) + 52px) !important;
+        left: 8px !important;
+    }
 }

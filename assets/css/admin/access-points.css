@@ -377,3 +377,127 @@
 .marker-highlight {
     animation: marker-bounce 600ms ease;
 }
+/* ══ RESPONSIVE ══════════════════════════════════════════════ */
+
+/* ── Tablet (≤768px) ──────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Page header — stack vertically */
+    .page-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Filters — stack filter groups vertically */
+    .ap-filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    .ap-filter-group {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Search takes full width */
+    .ap-filter-search {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Map card header — allow wrapping */
+    .ap-map-card .card-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    /* Map actions wrap below the title */
+    .ap-map-actions {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .ap-pin-coords {
+        width: 100%;
+        font-size: 0.72rem;
+    }
+}
+
+/* ── Mobile (≤480px) ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* Filter chips — smaller and tighter */
+    .ap-filter-btn {
+        font-size: 0.75rem;
+        padding: 4px 9px;
+    }
+    .ap-filter-btn svg { width: 11px; height: 11px; }
+
+    /* Table — hide less-critical columns, keep Name + Category + Status + Actions */
+    #apTable thead tr th:nth-child(3),  /* Sub-type */
+    #apTable thead tr th:nth-child(4),  /* Address */
+    #apTable thead tr th:nth-child(6),  /* Added By */
+    #apTable tbody tr td:nth-child(3),
+    #apTable tbody tr td:nth-child(4),
+    #apTable tbody tr td:nth-child(6) {
+        display: none;
+    }
+
+    /* Name column — prevent overflow */
+    #apTable tbody tr td:nth-child(1) {
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.825rem;
+    }
+
+    /* Tighten table cell padding on mobile */
+    #apTable thead th,
+    #apTable tbody td {
+        padding: 9px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Map wrap — slightly shorter on phone but still usable */
+    .ap-map-wrap { height: 300px; }
+
+    /* Map actions — stack buttons */
+    .ap-map-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ap-map-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Modal — ensure it doesn't overflow viewport */
+    .modal {
+        max-height: 92vh;
+        overflow-y: auto;
+    }
+
+    /* Coordinates row — stack vertically */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Photo drop area — smaller */
+    .ap-photo-drop {
+        padding: 16px 12px;
+        font-size: 0.775rem;
+    }
+    .ap-photo-drop svg { width: 20px; height: 20px; }
+
+    /* Leaflet map inside access-points — contain z-index */
+    .ap-map-wrap {
+        isolation: isolate;
+        z-index: 0;
+    }
+}
